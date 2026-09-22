@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#08111f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Speak Out!" />
+  <title>Speak Out! — Flash Cards</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">😬</span><div><strong>Speak Out!</strong><small>Flash cards în română</small></div></div>
+      <button class="icon-button" id="helpButton" aria-label="Instrucțiuni">?</button>
+    </header>
+
+    <section id="setupScreen" class="screen active">
+      <div class="hero"><span class="eyebrow">JOC DE PETRECERE</span><h1>Vorbește clar.<br /><em>Râzi tare.</em></h1><p>Propoziții noi, perfecte pentru plasticul din gură. Cine reușește să fie înțeles?</p></div>
+      <div class="panel setup-panel">
+        <div class="section-heading"><div><span class="step">01</span><h2>Jucătorii</h2></div><span class="player-count" id="playerCountLabel">2 jucători</span></div>
+        <div id="playersList" class="players-list"></div>
+        <button class="text-button" id="addPlayerButton">＋ Adaugă jucător</button>
+      </div>
+      <div class="panel options-panel">
+        <div class="section-heading"><div><span class="step">02</span><h2>Durata turei</h2></div><span class="timer-preview">⏱</span></div>
+        <div class="duration-options" role="radiogroup" aria-label="Durata turei">
+          <button data-duration="30">30 sec</button><button class="selected" data-duration="60">60 sec</button><button data-duration="90">90 sec</button><button data-duration="custom">Custom</button>
+        </div>
+        <input id="customDuration" class="custom-input hidden" type="number" min="10" max="300" value="45" aria-label="Durată personalizată în secunde" />
+      </div>
+      <button class="primary-button" id="startButton">Începe jocul <span>→</span></button>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div class="game-meta"><button class="back-button" id="quitButton">‹ Setări</button><span class="round-label" id="roundLabel">TURA 1</span><button class="score-button" id="scoreButton">Clasament</button></div>
+      <div class="turn-info"><p>Este rândul lui</p><h1 id="activePlayerName">Andrei</h1></div>
+      <div class="timer-ring" id="timerRing"><div><strong id="timerValue">60</strong><span>SEC</span></div></div>
+      <p class="hint" id="gameHint">Apasă „Arată propoziția” și încearcă să o spui.</p>
+      <div class="card-area"><article class="flash-card" id="flashCard"><div class="card-top"><span>PROVOCARE</span><span id="cardNumber">#01</span></div><div class="card-content"><span class="card-emoji">🤭</span><p id="sentenceText">Găina galbenă gătește gogoși gigantice.</p></div><div class="card-bottom">Citește propoziția cu plasticul în gură!</div></article></div>
+      <div class="game-actions"><button class="secondary-button" id="showButton">Arată propoziția</button><div class="result-actions hidden" id="resultActions"><button class="skip-button" id="skipButton">Pas</button><button class="correct-button" id="correctButton">✓ Ghicit!</button></div></div>
+    </section>
+
+    <section id="scoreScreen" class="screen"><div class="game-meta"><button class="back-button" id="scoreBackButton">‹ Joc</button><span class="round-label">SCORURI</span><span></span></div><div class="score-hero"><span class="trophy">🏆</span><h1>Clasamentul serii</h1><p>Fiecare propoziție ghicită valorează 1 punct.</p></div><div id="scoreList" class="score-list"></div><button class="primary-button" id="newGameButton">Joc nou <span>↻</span></button></section>
+  </main>
+
+  <dialog id="helpDialog"><button class="dialog-close" id="closeHelp">×</button><span class="dialog-icon">💡</span><h2>Cum se joacă?</h2><ol><li>Alege jucătorii și durata unei ture.</li><li>Pune plasticul Speak Out! în gură.</li><li>Apasă „Arată propoziția” și citește cardul.</li><li>Ceilalți încearcă să ghicească. Apasă „Ghicit!” sau „Pas”.</li><li>La finalul timpului, trece plasticul următorului jucător.</li></ol><p class="dialog-note">Sfat: ține telefonul la distanță de salivă și folosește-l pe rând. 😄</p></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
